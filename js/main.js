@@ -1,31 +1,49 @@
-// JSON: JavaScript Object Notation
+// JavaScript Errors and Handling Errors
 
-// JSON is used to send and recieve data
+"use strict";
 
-// JSON is a text format that is completely language independant
-// Meaning that JSON is used to send & recieve data in many languages,
-// And not just in JavaScript
+// Reference Error
 
-const myObj = {
-  name: "Ismail",
-  hobbies: ["eat", "sleep", "code"],
-  hello: function () {
-    console.log("Hello!");
-  },
+/* variable = "Ismail";
+console.log(variable);
+ */
+
+// Syntax Error
+
+/* Object..create(); */
+
+// Type Error
+
+/* const name = "ismail";
+name = "abdullah";
+ */
+
+// Try, Catch, Finally
+
+const makeError = () => {
+  let i = 1;
+  while (i <= 5) {
+    try {
+      if (i % 2 !== 0) {
+        throw new Error("Odd Number!");
+      }
+      console.log("Even Number");
+    } catch (err) {
+      console.error(err.stack);
+    } finally {
+      console.log("Finally...");
+      i++;
+    }
+  }
 };
 
-console.log(myObj);
-console.log(myObj.name);
-myObj.hello();
-console.log(typeof myObj);
+makeError();
 
-const sendJSON = JSON.stringify(myObj);
-console.log(sendJSON);
-console.log(typeof sendJSON);
-console.log(sendJSON.name);
+// Custom Error
 
-// When we recieve JSON from an Server
-
-const recieveJSON = JSON.parse(sendJSON);
-console.log(recieveJSON);
-console.log(typeof recieveJSON);
+/* function customError(message) {
+  this.message = message;
+  this.name = "custom error";
+  this.stack = `${this.name}: ${this.message}`;
+}
+ */
